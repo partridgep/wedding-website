@@ -14,7 +14,6 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
 h1{
   margin: 0;
