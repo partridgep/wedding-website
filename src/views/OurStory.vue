@@ -1,17 +1,14 @@
 <template>
   <div>
-    <MainSplash />
   </div>
 </template>
 
 <script>
-import MainSplash from '../components/MainSplash'
 
 export default {
   name: "Home",
-  title: "Janie + Paul",
+  title: "Janie + Paul | Our Story",
   components: {
-    MainSplash
   }
 };
 </script>
