@@ -6,8 +6,8 @@
 <script>
 
 export default {
-  name: "OurStory",
-  title: "Janie + Paul | Our Story",
+  name: "RSVP",
+  title: "Janie + Paul | RSVP",
   components: {
   }
 };

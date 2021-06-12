@@ -3,6 +3,7 @@ import VueRouter from "vue-router"
 import Home from "../views/Home.vue"
 import OurStory from "../views/OurStory.vue"
 import WeddingDetails from "../views/WeddingDetails.vue"
+import RSVP from "../views/RSVP.vue"
 import Registry from "../views/Registry.vue"
 
 Vue.use(VueRouter);
@@ -15,13 +16,18 @@ const routes = [
   },
   {
     path: "/our-story",
-    name: "OurStory",
+    name: "Our Story",
     component: OurStory,
   },
   {
     path: "/wedding-details",
-    name: "WeddingDetails",
+    name: "Wedding Details",
     component: WeddingDetails,
+  },
+  {
+    path: "/rsvp",
+    name: "RSVP",
+    component: RSVP,
   },
   {
     path: "/registry",

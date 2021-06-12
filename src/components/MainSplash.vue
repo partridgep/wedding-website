@@ -2,7 +2,7 @@
   <div class="main-splash">
     <section class="section bg-img">
       <h1 class="title">JANIE + PAUL</h1>
-      <h2 class="wedding-date">11 • 4 • 2022</h2>
+      <h2 class="wedding-date">{{weddingDate}}</h2>
     </section>
     <section class="section navigator">
       <router-link
@@ -18,20 +18,27 @@
 </template>
 
 <script>
+import { mapState } from "vuex"
+
 export default {
   name: 'MainSplash',
-  data() {
-    return {
-      options: [
-        'Our Story',
-        'Wedding Details',
-        'Registry'
-      ]
+  computed: {
+    ...mapState(['language', 'navOptions']),
+    options() {
+      return this.language === 'English' ? this.navOptions.english : this.navOptions.french
+    },
+    weddingDate() {
+      return this.language === 'English' ? '11 • 4 • 2022' : '4 • 11 • 2022'
     }
   },
   methods: {
     path(option) {
-      return `/${option.replace(/\s/g, '_')}`
+      if (this.language === 'English') return `/${option.replace(/\s/g, '-')}`.toLowerCase()
+      else {
+        let optionIdx = this.navOptions.french.findIndex((val) => val === option)
+        let englishOption = this.navOptions.english[optionIdx]
+        return `/${englishOption.replace(/\s/g, '-')}`.toLowerCase()
+      }
     },
   }
 }
@@ -140,11 +147,11 @@ h1 {
   transform: scaleX(0.2);
 }
 @media (max-width: 900px) {
-.navigatorBtn:hover::before {
-  transform: scaleX(0.6);
-}
+  .navigatorBtn:hover::before {
+    transform: scaleX(0.6);
+  }
 }
 .navigatorBtn:focus {
-  font-weight: 900;
+  font-weight: 400;
 }
 </style>
