@@ -3,33 +3,47 @@
     <h1>{{title}}</h1>
     <section id="info-intro">
       <p>{{introParagraph[0]}} <span>{{weddingDate}}</span> {{introParagraph[1]}} <a :href="chathamLink" target="_blank">Chatham Bars Inn</a> {{introParagraph[2]}}</p>
-      <img src="https://hauteliving.com/totliving/wp-content/uploads/2019/02/girls-weekend-chatham-bars-inn.jpg" alt="Chatham Bars Inn">
+      <img :src="chathamImglink" alt="Chatham Bars Inn">
     </section>
     <section id="location" class="info-section">
       <h2>{{gettingThereTitle}}</h2>
-      <p>The Chatham Bars Inn is located in Cape Cod, at 297 Shore Rd, Chatham, MA 02633. You can fly into the Cape Cod airport or drive down from Boston.</p>
+      <p>The Chatham Bars Inn is located in Cape Cod, at <a :href="gmapsLinks" target="_blank">297 Shore Rd, Chatham, MA 02633</a>. You can fly into the Cape Cod airport or drive down from Boston.</p>
+      <Map/>
     </section>
     <section id="hotels" class="info-section">
       <h2>Hotels</h2>
       <p>Besides the Chatham Bars Inn, there are a number of hotels conveniently located nearby such as the ... and ... (links).</p>
     </section>
-    <section>Schedule</section>
-    <section>Open Bar</section>
-    <section>Food Menu</section>
+    <section id="schedule" class="info-section">
+      <h2>Schedule</h2>
+      <p>To be announced soon!</p>
+    </section>
+    <section  id="openBar" class="info-section">
+      <h2>Open Bar</h2>
+      <p>A full open bar will be available during cocktail hour after the ceremony.</p>
+    </section>
+    <section id="menu" class="info-section">
+      <h2>Food Menu</h2>
+      <p>To be announced soon!</p>
+    </section>
   </div>
 </template>
 
 <script>
+import Map from '../components/Map'
 import { mapState } from "vuex"
 
 export default {
   name: "WeddingDetails",
   title: "Janie + Paul | Wedding Details",
   components: {
+    Map
   },
   data() {
     return {
-      chathamLink: 'https://www.chathambarsinn.com/'
+      chathamLink: 'https://www.chathambarsinn.com/',
+      chathamImglink: 'https://hauteliving.com/totliving/wp-content/uploads/2019/02/girls-weekend-chatham-bars-inn.jpg',
+      gmapsLinks: 'https://www.google.com/maps/place/297+Shore+Rd,+Chatham,+MA+02633/@41.6849731,-69.9545042,17z/data=!3m1!4b1!4m5!3m4!1s0x89fb135f29381ae5:0xd31d250630bb7b91!8m2!3d41.6849731!4d-69.9523155',
     }
   },
   computed: {
@@ -53,7 +67,7 @@ export default {
         ? 'Getting There'
         : 'Y Arriver'
     }
-  }
+  },
 };
 </script>
 

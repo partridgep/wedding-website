@@ -106,6 +106,7 @@ export default {
   align-items: center;
   position: sticky;
   top: 0;
+  z-index: 10;
 }
 .header-link {
   font-family: 'Josefin Sans', sans-serif;
@@ -138,6 +139,7 @@ export default {
 @media (max-width: 800px) {
   .grouped-links {
     display: none;
+    margin-left: 0;
   }
 }
 @media (max-width: 800px) {
