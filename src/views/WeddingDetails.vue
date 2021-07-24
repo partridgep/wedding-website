@@ -7,24 +7,24 @@
     </section>
     <section id="location" class="info-section">
       <h2>{{gettingThereTitle}}</h2>
-      <p>The Chatham Bars Inn is located in Cape Cod, at <a :href="gmapsLinks" target="_blank">297 Shore Rd, Chatham, MA 02633</a>. You can fly into the Cape Cod airport or drive down from Boston.</p>
+      <p>{{gettingThereParagraph[0]}}<a :href="gmapsLinks" target="_blank">297 Shore Rd, Chatham, MA 02633</a>{{gettingThereParagraph[1]}}</p>
       <Map/>
     </section>
     <section id="hotels" class="info-section">
-      <h2>Hotels</h2>
-      <p>Besides the Chatham Bars Inn, there are a number of hotels conveniently located nearby such as the ... and ... (links).</p>
+      <h2>{{hotelsTitle}}</h2>
+      <p>{{hotelsParagraph[0]}}</p>
     </section>
     <section id="schedule" class="info-section">
-      <h2>Schedule</h2>
-      <p>To be announced soon!</p>
+      <h2>{{scheduleTitle}}</h2>
+      <p>{{scheduleParagraph[0]}}</p>
     </section>
     <section  id="openBar" class="info-section">
       <h2>Open Bar</h2>
-      <p>A full open bar will be available during cocktail hour after the ceremony.</p>
+      <p>{{openBarParagraph}}</p>
     </section>
     <section id="menu" class="info-section">
-      <h2>Food Menu</h2>
-      <p>To be announced soon!</p>
+      <h2>{{foodMenuTitle}}</h2>
+      <p>{{foodMenuParagraph[0]}}</p>
     </section>
   </div>
 </template>
@@ -66,6 +66,46 @@ export default {
       return this.inEnglish
         ? 'Getting There'
         : 'Y Arriver'
+    },
+    gettingThereParagraph() {
+      return this.inEnglish
+        ? ['The Chatham Bars Inn is located in Cape Cod, at ', '. You can fly into the Cape Cod airport or drive down from Boston.']
+        : ['Le Chatham Bars Inn est situé à Cape Cod, à ', ". Vous pouvez voler jusqu'à l'aéroport de Cape Code ou arriver en voiture depuis Boston."]
+    },
+    hotelsTitle() {
+      return this.inEnglish
+        ? 'Hotels'
+        : 'Hôtels'
+    },
+    hotelsParagraph() {
+      return this.inEnglish
+        ? ['Besides the Chatham Bars Inn, there are a number of hotels conveniently located nearby such as the ... and ... (links).']
+        : ["À part l'hôtel Chatham Bars Inn, il y a d'autres hôtels situés proches tels que le ... et ... (liens)."]
+    },
+    scheduleTitle() {
+      return this.inEnglish
+        ? 'Schedule'
+        : 'Programme'
+    },
+    scheduleParagraph() {
+      return this.inEnglish
+        ? ['To be announced soon!']
+        : ['Informations à venir!']
+    },
+    openBarParagraph() {
+      return this.inEnglish
+        ? 'A full open bar will be available during cocktail hour after the ceremony.'
+        : 'Un open bar sera disponible après la cérémonie.'
+    },
+    foodMenuTitle() {
+      return this.inEnglish
+        ? 'Food Menu'
+        : 'Menu'
+    },
+    foodMenuParagraph() {
+      return this.inEnglish
+        ? ['To be announced soon!']
+        : ['Informations à venir!']
     }
   },
 };
