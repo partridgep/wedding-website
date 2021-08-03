@@ -79,8 +79,8 @@ export default {
     },
     hotelsParagraph() {
       return this.inEnglish
-        ? ['Besides the Chatham Bars Inn, there are a number of hotels conveniently located nearby such as the ... and ... (links).']
-        : ["À part l'hôtel Chatham Bars Inn, il y a d'autres hôtels situés proches tels que le ... et ... (liens)."]
+        ? ['Besides the Chatham Bars Inn, there are a number of hotels conveniently located nearby. Check back soon for more details!']
+        : ["À part l'hôtel Chatham Bars Inn, il y a d'autres hôtels situés proches. Revisitez ce site bientôt pour plus d'informations!"]
     },
     scheduleTitle() {
       return this.inEnglish

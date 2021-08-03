@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header v-show="notOnMain" />
+    <Header/>
     <router-view/>
   </div>
 </template>

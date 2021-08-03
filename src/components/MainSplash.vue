@@ -4,16 +4,6 @@
       <h1 class="title">JANIE + PAUL</h1>
       <h2 class="wedding-date">{{weddingDate}}</h2>
     </section>
-    <section class="section navigator">
-      <router-link
-        v-for="option in options"
-        :key="option"
-        :to="path(option)"
-        class="navigatorBtn"
-      >
-        {{option}}
-      </router-link>
-    </section>
   </div>
 </template>
 
@@ -49,52 +39,25 @@ h1 {
   margin: 0;
 }
 .main-splash {
-  height: 100vh;
+  position: relative;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  perspective: 2px;
 }
 .section {
   position: relative;
-  height: 100vh;
+  height: calc(100vh - 75px);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .bg-img {
   justify-content: center;
-}
-.bg-img::after {
-  height: 100vh;
-  content: " ";
   background: linear-gradient(rgba(10,10,10,0),rgba(0,0,0,.5)),
 		url('https://i.imgur.com/31qnQpu.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transform: translateZ(-1px) scale(1.5);
-  background-size: 100%;
-  z-index: -1;
-}
-@media (max-width: 300px) {
-  .bg-img::after {
-    transform: translateZ(-1px) translateX(-10vw) scale(2.5);
-  }
-}
-@media (max-width: 700px) {
-  .bg-img::after {
-    transform: translateZ(-1px) translateX(-10vw) scale(2.3);
-  }
-}
-@media (min-width: 1700px) {
-  .bg-img::after {
-    transform: translateZ(-1px) scale(1.5);
-  }
 }
 .title {
   font-size: 12vw;
