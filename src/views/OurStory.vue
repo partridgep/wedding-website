@@ -1,6 +1,26 @@
 <template>
-  <div>
-    <h1>{{checkBackSoon}}</h1>
+  <div id="ourStory" @scroll="handleScroll">
+    <section id="firstSentence">
+      <h2>{{firstSentence}}</h2>
+    </section>
+    <section id="balloonDiv">
+      <img src="../assets/balloon.svg" />
+    </section>
+      <p id="ms-1">
+        On August 30th, 2014, we met at Wesleyan University’s Freshman Orientation carnival spectacular. Booths full of a bounty of prizes to win, a giant moon bounce, and snacks littering the Usdan student center’s entrance set our scene - one could argue romance was very much in the air.
+      </p>
+      <p id="ms-2">
+        Janie was mingling with some newfound classmates and had just won a gargantuan balloon with a rubber band string attached, perfectly optimal for bouncing up and down. Her new friends introduced her to a few more of their hall mates, a nerdy Frenchman named Paul was among this gaggle of lanyard-donning frosh.
+      </p>
+      <p id="ms-3">
+        He was instantly entranced by her deeply enviable balloon on a string and immediately inquired where he, too, might procure one. After the awkward dance of introductions, Janie then pointed Paul in the right direction, an unassuming carnival booth where you throw bouncy balls into wee cans to win big (aka a balloon on a string!).
+      </p>
+      <p id="ms-4">
+        Promptly thereafter, Paul ran back to the bigger group of seemingly multiplying freshman nerds and playfully bounced his balloon against Janie. And from that moment on, they were best friends.
+      </p>
+    <section id="lastSentence">
+      <h2>{{lastSentence}}</h2>
+    </section>
   </div>
 </template>
 
@@ -12,43 +32,181 @@ export default {
   title: "Janie + Paul | Our Story",
   components: {
   },
+  data() {
+    return {
+      frameCount: 2000
+    }
+  },
   computed: {
     ...mapState(['language']),
     inEnglish() {
       return this.language === 'English'
     },
-    checkBackSoon() {
+    firstSentence() {
       return this.inEnglish
-        ? 'Check back soon!'
-        : 'Informations à venir!'
+        ? 'It all started with a balloon...'
+        : 'Tout a commencé avec un ballon...'
+    },
+    lastSentence() {
+      return this.inEnglish
+        ? '2,990 days later, aka 427 weeks later, aka 8 years, 2 months and 7 days later, Paul and Janie will get married. '
+        : '2990 jours plus tard, our 427 semaines plus tard, ou 8 ans, 2 mois et 7 jours plus tard, Paul et Janie vont se marier'
+    },
+  },
+  methods: {
+    handleScroll() {
+      const frameIndex = this.getFrameIndex()
+      // console.log(frameIndex)
+
+      const firstSentence = document.querySelector(`#firstSentence`)
+      const lastSentence = document.querySelector(`#lastSentence`)
+      const balloon = document.querySelector('img')
+      // const mainStory = document.querySelector('#mainStory')
+      const mainStory1 = document.querySelector('#ms-1')
+      const mainStory2 = document.querySelector('#ms-2')
+      const mainStory3 = document.querySelector('#ms-3')
+      const mainStory4 = document.querySelector('#ms-4')
+
+      const balloonTop = balloon.getBoundingClientRect().top
+      const balloonBottom = balloon.getBoundingClientRect().bottom
+
+      if (balloonTop < 42) {
+        firstSentence.style.opacity =  `${balloonTop}%`
+      } else {
+        firstSentence.style.opacity = 100
+      }
+      if (balloonBottom < 102) {
+        mainStory1.style.opacity = `${100 - balloonBottom}%`
+      } else {
+        mainStory1.style.opacity = 0
+        mainStory2.style.opacity = 0
+        mainStory3.style.opacity = 0
+        mainStory4.style.opacity = 0
+      }
+      if (frameIndex > 700 && balloonBottom < 0) {
+        mainStory1.style.opacity = `${100 - (frameIndex - 700)}%`
+        mainStory2.style.opacity = 0
+      }
+      if (frameIndex > 800 && frameIndex <= 900) {
+        mainStory2.style.opacity = `${frameIndex - 800}%`
+        mainStory3.style.opacity = 0
+        mainStory4.style.opacity = 0
+      }
+      if (frameIndex > 900 && frameIndex <= 1000) {
+        mainStory1.style.opacity = 0
+        mainStory2.style.opacity = `${100 - (frameIndex - 900)}%`
+        mainStory3.style.opacity = 0
+        mainStory4.style.opacity = 0
+      }
+      if (frameIndex > 1000 && frameIndex <= 1200) {
+        mainStory1.style.opacity = 0
+        mainStory2.style.opacity = 0
+        mainStory3.style.opacity = `${frameIndex - 1000}%`
+        mainStory4.style.opacity = 0
+      }
+      if (frameIndex > 1200 && frameIndex <= 1300) {
+        mainStory1.style.opacity = 0
+        mainStory2.style.opacity = 0
+        mainStory3.style.opacity = `${100 - (frameIndex - 1200)}%`
+        mainStory4.style.opacity = 0
+      }
+      if (frameIndex > 1300) {
+        mainStory1.style.opacity = 0
+        mainStory2.style.opacity = 0
+        mainStory3.style.opacity = 0
+        mainStory4.style.opacity = `${frameIndex - 1300}%`
+      }
+      if (frameIndex > 1500) {
+        mainStory4.style.opacity = `${100 - (frameIndex - 1500)}%`
+      }
+      if (frameIndex < 1700) {
+        lastSentence.style.opacity = 0
+      }
+      if (frameIndex > 1700) {
+        mainStory4.style.opacity = 0
+        lastSentence.style.opacity = `${frameIndex - 1700}%`
+      }
+
+    },
+    getFrameIndex() {
+      const scrollTop = window.scrollY
+      const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollFraction = scrollTop / maxScrollTop;
+      const frameIndex = Math.min(
+            this.frameCount - 1,
+            Math.ceil(scrollFraction * this.frameCount)
+        );
+      return frameIndex
     }
-  }
+  },
+  mounted() {
+    this.handleScroll()
+  },
+  created () {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
 };
 </script>
 
 <style scoped>
 div {
-  margin: 4rem;
-  animation: fade-in 0.4s ease-in;
+  animation: fade-in 1s ease-in;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 1200vh;
+  overflow-x: hidden;
+}
+#firstSentence, #lastSentence {
+  display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
-  height: 75vh;
+  height: 100vh;
+  position: fixed;
+  top: 1vh;
+  margin: 0 auto;
 }
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-  text-transform: uppercase;
+#firstSentence {
+  width: 100vw;
+}
+h2 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  letter-spacing: 0.2rem;
   text-align: center;
-  letter-spacing: 4px;
-  margin: 5rem 0;
-  padding: 0 5px;
+  width: auto;
+  padding: 0 4vw;
 }
+#balloonDiv {
+  position: relative;
+  top: 100vh;
+}
+#balloonDiv > img {
+  width: 110vw;
+  overflow-x: hidden;
+}
+
 p {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1.5rem;
   font-weight: 300;
   line-height: 2.3rem;
+}
+#ms-1, #ms-2, #ms-3, #ms-4 {
+  height: calc(100vh - 75px);
+  padding: 0 4rem;
+  top: 75px;
+  display: flex; 
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  margin: 0 auto;
 }
 p > span {
   font-weight: 400;
@@ -57,9 +215,19 @@ p > span {
   div {
     margin: 0;
   }
-  h1 {
-    font-size: 2rem;
-    margin: 3rem 0;
+  h2 {
+    padding: 0 6vw;
+  }
+  #balloonDiv > img {
+    width: 160vw;
+    overflow-x: hidden;
+    margin-left: -19%;
+  }
+  #ms-1, #ms-2, #ms-3, #ms-4 {
+    padding: 0 2rem;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    top: 55px;
   }
 }
 </style>
