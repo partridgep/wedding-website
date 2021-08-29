@@ -76,7 +76,7 @@ export default {
         firstSentence.style.opacity = 100
       }
       if (balloonBottom < 102) {
-        mainStory1.style.opacity = `${100 - balloonBottom}%`
+        mainStory1.style.opacity = `${(100 - balloonBottom) * 2}%`
       } else {
         mainStory1.style.opacity = 0
         mainStory2.style.opacity = 0
@@ -88,7 +88,7 @@ export default {
         mainStory2.style.opacity = 0
       }
       if (frameIndex > 800 && frameIndex <= 900) {
-        mainStory2.style.opacity = `${frameIndex - 800}%`
+        mainStory2.style.opacity = `${(frameIndex - 800) * 2}%`
         mainStory3.style.opacity = 0
         mainStory4.style.opacity = 0
       }
@@ -101,7 +101,7 @@ export default {
       if (frameIndex > 1000 && frameIndex <= 1200) {
         mainStory1.style.opacity = 0
         mainStory2.style.opacity = 0
-        mainStory3.style.opacity = `${frameIndex - 1000}%`
+        mainStory3.style.opacity = `${(frameIndex - 1000) * 2}%`
         mainStory4.style.opacity = 0
       }
       if (frameIndex > 1200 && frameIndex <= 1300) {
@@ -114,7 +114,7 @@ export default {
         mainStory1.style.opacity = 0
         mainStory2.style.opacity = 0
         mainStory3.style.opacity = 0
-        mainStory4.style.opacity = `${frameIndex - 1300}%`
+        mainStory4.style.opacity = `${(frameIndex - 1300) * 2}%`
       }
       if (frameIndex > 1500) {
         mainStory4.style.opacity = `${100 - (frameIndex - 1500)}%`
@@ -124,7 +124,7 @@ export default {
       }
       if (frameIndex > 1700) {
         mainStory4.style.opacity = 0
-        lastSentence.style.opacity = `${frameIndex - 1700}%`
+        lastSentence.style.opacity = `${(frameIndex - 1700) * 2}%`
       }
 
     },
