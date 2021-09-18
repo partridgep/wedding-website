@@ -7,16 +7,16 @@
       <img src="../assets/balloon.svg" />
     </section>
       <p id="ms-1">
-        On August 30th, 2014, we met at Wesleyan University’s Freshman Orientation carnival spectacular. Booths full of a bounty of prizes to win, a giant moon bounce, and snacks littering the Usdan student center’s entrance set our scene - one could argue romance was very much in the air.
+        {{mainStoryParagraph1}}
       </p>
       <p id="ms-2">
-        Janie was mingling with some newfound classmates and had just won a gargantuan balloon with a rubber band string attached, perfectly optimal for bouncing up and down. Her new friends introduced her to a few more of their hall mates, a nerdy Frenchman named Paul was among this gaggle of lanyard-donning frosh.
+        {{mainStoryParagraph2}}
       </p>
       <p id="ms-3">
-        He was instantly entranced by her deeply enviable balloon on a string and immediately inquired where he, too, might procure one. After the awkward dance of introductions, Janie then pointed Paul in the right direction, an unassuming carnival booth where you throw bouncy balls into wee cans to win big (aka a balloon on a string!).
+        {{mainStoryParagrap3}}
       </p>
       <p id="ms-4">
-        Promptly thereafter, Paul ran back to the bigger group of seemingly multiplying freshman nerds and playfully bounced his balloon against Janie. And from that moment on, they were best friends.
+        {{mainStoryParagrap4}}
       </p>
     <section id="lastSentence">
       <h2>{{lastSentence}}</h2>
@@ -47,6 +47,26 @@ export default {
         ? 'It all started with a balloon...'
         : 'Tout a commencé avec un ballon...'
     },
+    mainStoryParagraph1() {
+      return this.inEnglish
+        ? 'On August 30th, 2014, we met at Wesleyan University’s Freshman Orientation carnival spectacular. Booths full of a bounty of prizes to win, a giant moon bounce, and snacks littering the Usdan student center’s entrance set our scene - one could argue romance was very much in the air.'
+        : 'Le 30 août 2014, nous nous sommes recontrés durant la soirée "carnaval" pendant notre première semaine à notre université, Wesleyan University. Nous fûmes entourés de stands oû gagner des prix, un chateau gonflable, et des collations parmi le centre pour étudiants -  on pourrait dire que la romance était dans l\'air.' 
+    },
+    mainStoryParagraph2() {
+      return this.inEnglish
+        ? 'Janie was mingling with some newfound classmates and had just won a gargantuan balloon with a rubber band string attached, perfectly optimal for bouncing up and down. Her new friends introduced her to a few more of their hall mates, a nerdy Frenchman named Paul was among this gaggle of lanyard-donning frosh.'
+        : 'Janie faisait connaissance avec des camarades de classe et venait de gagner un ballon gargantuesque avec un élastique attaché, optimal pour faire rebondir. Ses nouveaux amis l\'on présentée à quelques autres de leurs camarades, dont un Français.' 
+    },
+    mainStoryParagrap3() {
+      return this.inEnglish
+        ? 'He was instantly entranced by her deeply enviable balloon on a string and immediately inquired where he, too, might procure one. After the awkward dance of introductions, Janie then pointed Paul in the right direction, an unassuming carnival booth where you throw bouncy balls into wee cans to win big (aka a balloon on a string!).'
+        : 'Il fut fasciné par son ballon pronfondément enviable et lui demanda immédiatement oû il pourrait, lui aussi, s\'en procurer un. Après la dance des introductions, Janie pointa Paul dans la bonne direction, un stand oû l\'on pouvait lancer des balles vers des des cannettes pour gagner gros (c\'est à dire un ballon avec un élastique!).' 
+    },
+    mainStoryParagrap4() {
+      return this.inEnglish
+        ? 'Promptly thereafter, Paul ran back to the bigger group of seemingly multiplying freshman nerds and playfully bounced his balloon against Janie. And from that moment on, they were best friends.'
+        : 'Peu de temps après, Paul courut de retour vers le groupe d\'étudiants de première année (qui semblait se multiplier) et, de manière amusante, fut rebondir son ballon vers Janie. À partir de ce moment là, ils étaient meilleurs amis.' 
+    },
     lastSentence() {
       return this.inEnglish
         ? '2,990 days later, aka 427 weeks later, aka 8 years, 2 months and 7 days later, Paul and Janie will get married. '
@@ -56,12 +76,10 @@ export default {
   methods: {
     handleScroll() {
       const frameIndex = this.getFrameIndex()
-      // console.log(frameIndex)
 
       const firstSentence = document.querySelector(`#firstSentence`)
       const lastSentence = document.querySelector(`#lastSentence`)
       const balloon = document.querySelector('img')
-      // const mainStory = document.querySelector('#mainStory')
       const mainStory1 = document.querySelector('#ms-1')
       const mainStory2 = document.querySelector('#ms-2')
       const mainStory3 = document.querySelector('#ms-3')
@@ -126,7 +144,6 @@ export default {
         mainStory4.style.opacity = 0
         lastSentence.style.opacity = `${(frameIndex - 1700) * 2}%`
       }
-
     },
     getFrameIndex() {
       const scrollTop = window.scrollY
