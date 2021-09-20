@@ -1,6 +1,13 @@
 <template>
-  <div>
-    <h1>{{checkBackSoon}}</h1>
+  <div class="rsvp">
+    <h1>RSVP</h1>
+    <div class="rsvpMsg">
+      <p>
+        {{msg[0]}}
+        <a :href="link" target="_blank">{{msg[1]}}</a>
+        {{msg[2]}}
+      </p>
+    </div>
   </div>
 </template>
 
@@ -10,29 +17,28 @@ import { mapState } from "vuex"
 export default {
   name: "RSVP",
   title: "Janie + Paul | RSVP",
-  components: {
+  data() {
+    return {
+      link: 'https://www.zola.com/wedding/janieandpaul/rsvp'
+    }
   },
   computed: {
     ...mapState(['language']),
     inEnglish() {
       return this.language === 'English'
     },
-    checkBackSoon() {
+    msg() {
       return this.inEnglish
-        ? 'Check back soon!'
-        : 'Informations à venir!'
+        ? ['Please click on ', 'this link' ,' to RSVP to the wedding.']
+        : ['Veuillez clicker sur ', 'ce lien', ' pour accéder à la forme RSVP.']
     }
   }
 };
 </script>
 
 <style scoped>
-div {
-  margin: 4rem;
+.rsvp {
   animation: fade-in 0.4s ease-in;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 75vh;
 }
 h1 {
@@ -49,9 +55,15 @@ p {
   font-size: 1.5rem;
   font-weight: 300;
   line-height: 2.3rem;
+  text-align: center;
+  padding: 0 5vw;
 }
-p > span {
-  font-weight: 400;
+.rsvpMsg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 100vw;
 }
 @media (max-width: 900px) {
   div {
