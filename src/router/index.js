@@ -34,6 +34,9 @@ const routes = [
     name: "Registry",
     component: Registry,
   },
+  {
+    path: '/*',
+  }
  ]
 
 const router = new VueRouter({

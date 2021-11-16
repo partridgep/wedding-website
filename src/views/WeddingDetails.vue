@@ -23,16 +23,16 @@
       <h2>{{hotelsTitle}}</h2>
       <ul>
         <li><a :href="chathamLink" target="_blank">Chatham Bars Inn</a>: {{hotel1}}</li>
-        <li><a :href="chathamInnLink" target="_blank">Chatam Inn</a>: {{hotel2}}</li>
-        <li><a :href="chathamTidesLink" target="_blank">Chatam Tides</a>: {{hotel3}}</li>
-        <li><a :href="chathamHighlanderLink" target="_blank">Chatam Highlander Hotel</a>: {{hotel4}}</li>
+        <li><a :href="chathamInnLink" target="_blank">Chatham Inn</a>: {{hotel2}}</li>
+        <li><a :href="chathamTidesLink" target="_blank">Chatham Tides</a>: {{hotel3}}</li>
+        <li><a :href="chathamHighlanderLink" target="_blank">Chatham Highlander Hotel</a>: {{hotel4}}</li>
       </ul>
     </section>
     <section id="eat" class="info-section">
       <h2>{{eatTitle}}</h2>
       <ul>
-        <li><a :href="squireLink" target="_blank">Chatam Squire</a>: {{eat1}}</li>
-        <li><a :href="chathamBarsDiningLink" target="_blank">Chatam Bars Inn</a>: {{eat2}}</li>
+        <li><a :href="squireLink" target="_blank">Chatham Squire</a>: {{eat1}}</li>
+        <li><a :href="chathamBarsDiningLink" target="_blank">Chatham Bars Inn</a>: {{eat2}}</li>
         <li><a :href="cuveeLink" target="_blank">Cuvée (Chatham Inn)</a>: {{eat3}}</li>
         <li><a :href="delMarLink" target="_blank">Del Mar</a>: {{eat4}}</li>
         <li>{{eat5}}</li>
@@ -100,7 +100,7 @@ export default {
     },
     gettingThereParagraph() {
       return this.inEnglish
-        ? ['The Chatham Bars Inn is located in Cape Cod, at ']
+        ? ['The Chatham Bars Inn is located in Cape Cod at ']
         : ['Le Chatham Bars Inn est situé à Cape Cod, à ']
     },
     flyingTitle() {
@@ -145,7 +145,7 @@ export default {
     },
     hotel3() {
       return this.inEnglish
-        ? 'upscale, seaside hotel 14 minute drive from Chatham Bars Inn; off-season pricing starting at ~ $175.'
+        ? 'seaside hotel 14 minute drive from Chatham Bars Inn; off-season pricing starting at ~ $175.'
         : 'hôtel au bord de la mer à 14 minutes de conduite du Chatham Bars Inn; prix hors-saison à partir de $175.'
     },
     hotel4() {
@@ -165,8 +165,8 @@ export default {
     },
     eat2() {
       return this.inEnglish
-        ? 'upscale bar and restaurants'
-        : "bar et restaurants chics"
+        ? 'upscale bar and restaurants on property'
+        : "bar et restaurants chics sur location"
     },
     eat3() {
       return this.inEnglish
@@ -180,8 +180,8 @@ export default {
     },
     eat5() {
       return this.inEnglish
-        ? 'Coffee runs: Dunkin Donuts and Starbucks outside of town'
-        : 'Café: Starbucks en dehors de la ville'
+        ? 'Coffee runs: Dunkin Donuts and Starbucks outside of downtown'
+        : 'Café: Starbucks et autres cafés'
     },
     scheduleTitle() {
       return this.inEnglish
