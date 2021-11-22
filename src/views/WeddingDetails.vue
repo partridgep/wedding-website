@@ -40,28 +40,35 @@
     </section>
     <section id="schedule" class="info-section">
       <h2>{{scheduleTitle}}</h2>
-      <p>{{scheduleParagraph[0]}}</p>
+      <ul>
+        <li>{{scheduleParts[0]}}</li>
+        <li>{{scheduleParts[1]}}</li>
+        <li>{{scheduleParts[2]}}</li>
+        <li>{{scheduleParts[3]}}</li>
+      </ul>
     </section>
-    <section  id="openBar" class="info-section">
+    <section id="openBar" class="info-section">
       <h2>Open Bar</h2>
       <p>{{openBarParagraph}}</p>
     </section>
-    <section id="menu" class="info-section">
+    <section  class="info-section">
       <h2>{{foodMenuTitle}}</h2>
-      <p>{{foodMenuParagraph[0]}}</p>
+      <Menu />
     </section>
   </div>
 </template>
 
 <script>
 import Map from '../components/Map'
+import Menu from '../components/Menu'
 import { mapState } from "vuex"
 
 export default {
   name: "WeddingDetails",
   title: "Janie + Paul | Wedding Details",
   components: {
-    Map
+    Map,
+    Menu
   },
   data() {
     return {
@@ -90,8 +97,8 @@ export default {
     },
     introParagraph() {
       return this.inEnglish 
-        ? ['Our wedding will take place on', 'at', 'in the afternoon (exact time TBD).']
-        : ['Notre mariage se tiendra le', 'à', "dans l'après-midi (heure exacte à préciser.)"]
+        ? ['Our wedding will take place on', 'at', 'at 4:30PM.']
+        : ['Notre mariage se tiendra le', 'à', "à 16h30"]
     },
     gettingThereTitle() {
       return this.inEnglish
@@ -188,26 +195,33 @@ export default {
         ? 'Schedule'
         : 'Programme'
     },
-    scheduleParagraph() {
+    scheduleParts() {
       return this.inEnglish
-        ? ['To be announced soon!']
-        : ['Informations à venir!']
+        ? 
+      [
+        '4:30 - 5pm • Ceremony at The Boathouse on Chatham Bars Inn property',
+        '5-6pm • Cocktail hour at The Stars room within main resort',
+        '6-10pm • Dinner and dancing',
+        '11pm onward • After party at The Squire downtown Chatham'
+      ]
+        : 
+      [
+        '16h30 - 17h • Cérémonie dans la salle Boathouse à Chatham Bars Inn',
+        '17h - 18h • Cocktails dans la salle Stars à Chatham Bars Inn',
+        '18h - 22h • Dîner et danse',
+        '23h et après • Après-fête au restaurant The Squire à Chatham'
+      ]
     },
     openBarParagraph() {
       return this.inEnglish
-        ? 'A full open bar will be available during cocktail hour after the ceremony.'
-        : 'Un open bar sera disponible après la cérémonie.'
+        ? 'A full deluxe bar with White, Red, and Rosé wines, beer, and liquors will be available during cocktail hour after the ceremony.'
+        : 'Un open bar deluxe avec vins rouges, blancs, et rosés, bières et liqueurs sera disponible après la cérémonie.'
     },
     foodMenuTitle() {
       return this.inEnglish
         ? 'Food Menu'
         : 'Menu'
     },
-    foodMenuParagraph() {
-      return this.inEnglish
-        ? ['To be announced soon!']
-        : ['Informations à venir!']
-    }
   },
 };
 </script>
@@ -285,18 +299,15 @@ p > span {
 .info-section ul {
   margin: 0 3rem;
 }
-.info-section p {
-  margin-top: 4rem;
-}
 @media (max-width: 900px) {
   .info-section {
     margin: 1rem 0 5rem 0;
   }
   .info-section h2 {
-    margin: 0 2rem;
+    margin: 2rem;
   }
   .info-section ul {
-    margin: 0 2rem;
+    margin: 0 1.2rem;
   }
 }
 </style>
