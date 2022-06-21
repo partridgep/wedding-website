@@ -1,6 +1,13 @@
 <template>
-  <div>
-    <h1>{{checkBackSoon}}</h1>
+  <div class="registry">
+    <h1>Registry</h1>
+    <div class="registryMsg">
+      <p>
+        {{msg[0]}}
+        <a :href="link" target="_blank">{{msg[1]}}</a>
+        {{msg[2]}}
+      </p>
+    </div>
   </div>
 </template>
 
@@ -12,27 +19,31 @@ export default {
   title: "Janie + Paul | Registry",
   components: {
   },
+  data() {
+    return {
+      link: 'https://www.zola.com/registry/janieandpaul'
+    }
+  },
   computed: {
+    ...mapState(['language']),
+    computed: {
     ...mapState(['language']),
     inEnglish() {
       return this.language === 'English'
     },
-    checkBackSoon() {
+    msg() {
       return this.inEnglish
-        ? 'Check back soon!'
-        : 'Informations à venir!'
+        ? ['Please click on ', 'this link' ,' to access our registry.']
+        : ['Veuillez clicker sur ', 'ce lien', ' pour accéder à notre "registry."']
     }
+  }
   }
 };
 </script>
 
 <style scoped>
-div {
-  margin: 4rem;
+.registry {
   animation: fade-in 0.4s ease-in;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 75vh;
 }
 h1 {
@@ -49,9 +60,15 @@ p {
   font-size: 1.5rem;
   font-weight: 300;
   line-height: 2.3rem;
+  text-align: center;
+  padding: 0 5vw;
 }
-p > span {
-  font-weight: 400;
+.registryMsg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 100vw;
 }
 @media (max-width: 900px) {
   div {
