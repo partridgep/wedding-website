@@ -26,8 +26,6 @@ export default {
   },
   computed: {
     ...mapState(['language']),
-    computed: {
-    ...mapState(['language']),
     inEnglish() {
       return this.language === 'English'
     },
@@ -36,7 +34,6 @@ export default {
         ? ['Please click on ', 'this link' ,' to access our registry.']
         : ['Veuillez clicker sur ', 'ce lien', ' pour accéder à notre "registry."']
     }
-  }
   }
 };
 </script>
