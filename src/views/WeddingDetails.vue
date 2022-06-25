@@ -53,6 +53,7 @@
     </section>
     <section  class="info-section">
       <h2>{{foodMenuTitle}}</h2>
+      <p class="italic">{{mealSelectionInfo}}</p>
       <Menu />
     </section>
   </div>
@@ -222,6 +223,11 @@ export default {
         ? 'Food Menu'
         : 'Menu'
     },
+    mealSelectionInfo() {
+      return this.inEnglish
+        ? 'Please make your meal selections on the RSVP form.'
+        : 'Veuillez choisir votre repas à travers votre RSVP.'
+    }
   },
 };
 </script>
@@ -249,6 +255,9 @@ p, ul {
 p > span {
   font-weight: 400;
 }
+.italic {
+    font-style: italic;
+  }
 @media (max-width: 900px) {
   div {
     margin: 0;
