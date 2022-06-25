@@ -13,10 +13,7 @@
       <ul>
         <li>{{flying1}}</li>
         <li>{{flying2}}</li>
-      </ul>
-      <h3>{{trainTitle}}</h3>
-      <ul>
-        <li>{{train1}}</li>
+        <li>{{flying3}}</li>
       </ul>
     </section>
     <section id="hotels" class="info-section">
@@ -126,15 +123,10 @@ export default {
         ? 'Fly into Boston Logan Airport and rent a car (2hr drive).'
         : 'Arrivez à Boston Logan Airport et louez une voiture (2h de conduite.)'
     },
-    trainTitle() {
+    flying3() {
       return this.inEnglish
-        ? 'Train'
-        : 'Par Train'
-    },
-    train1() {
-      return this.inEnglish
-        ? 'From NYC Penn Station take direct Amtrak train to Hyannis, MA (rent a car or rideshare for 30m drive).'
-        : "Depuis la Penn Station à New York, prenez le train direct Amtrak jusqu'à Hyannis, MA (puis louez une voiture ou prenez un Uber pour 30 minute.)"
+        ? 'Fly into Hyannis Barnstable Municipal Airport (via JetBlue) and Uber/Lyft to Chatham (30 minute drive).'
+        : "Arrivez à Hyannis Barnstable Municipal Airport (via JetBlue) et prenez un Uber ou Lyft jusqu'à Chatham (30 minutes de conduite.)"
     },
     hotelsTitle() {
       return this.inEnglish
