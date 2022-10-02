@@ -95,8 +95,8 @@ export default {
     },
     introParagraph() {
       return this.inEnglish 
-        ? ['Our wedding will take place on', 'at', 'at 4:30PM.']
-        : ['Notre mariage se tiendra le', 'à', "à 16h30"]
+        ? ['Our wedding will take place on', 'at', 'at 4:30PM. We kindly ask that you come vaccinated against COVID-19.']
+        : ['Notre mariage se tiendra le', 'à', "à 16h30. Veuillez arriver vaccinés contre le COVID-19."]
     },
     gettingThereTitle() {
       return this.inEnglish
